@@ -140,3 +140,83 @@
     
 
 참고했던 사이트)
+
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+# docker 기본 설명
+
+[초보를 위한 도커 안내서 - 설치하고 컨테이너 실행하기](https://subicura.com/2017/01/19/docker-guide-for-beginners-2.html)
+
+- 컨테이너 실행 확인
+    
+    docker ps :  실행중인 컨테이너 확인
+    
+    docker ps -a : 실행중이지 않은 컨테이너를 포함한 정보 확인
+    
+- 컨테이너 삭제
+    
+    docker rm -f [container name]
+    
+    docker rm -v $(docker ps -a -q -f status=exited)
+    
+- 이미지 삭제
+    
+    docker rmi [image name]
+    
+- 컨테이너 시작/중지
+    
+    docker start [container name]
+    
+    docker stop [container ID]
+    
+- run(컨테이너 생성)
+    
+    → 우분투 이미지 다운로드(pull)-컨테이너 생성(create)-실행(start)-접속(exec) 과정을 한 번에 함
+    
+    docker run -t -i -p [외부포트:내부포트] —name [컨테이너 이름] [이미지이름] /bin/bash
+    
+    (-t, -i 는 터미널 입력 옵션, -p는 호스트와 컨테이너의 포트 연결)
+    
+- pull (이미지 다운로드)
+    
+    docker pull ubuntu:20.04(tag)
+    
+- create (컨테이너 생성)
+    
+    docker create -t -i -p 8888:8888 —name test ubuntu:20.04 /bin/bash
+    
+    이러면 docker ps -a 에서 Created 상태가 됨.
+    
+- start(컨테이너 실행)
+    
+    스타트 하면 컨테이너가 실행되어 docker ps 에 올라감 
+    
+    docker start [컨테이너 이름]
+    
+- exec(컨테이너로 접속)
+    
+    docker exec -it [NAMES] /bin/bash
+    
+    (-it 는 터미널 키보드 입력 옵션)
+    
+
+- 도커 컨테이너 환경 구축
+
+apt-get update 
+
+apt-get wget
+
+wget conda다운로드주소
+
+vim ~/.bashrc (아나콘다 path 설정인데, 이거 안했는데도 터미널 다시 새창으로 켜니까 (base) 생성됨)
+
+docker container export sanghun -o testdocker.tar
+
+→ 이미지 타르 파일 만들어짐
+
+
+
+
